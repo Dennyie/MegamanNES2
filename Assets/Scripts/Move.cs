@@ -31,6 +31,7 @@ public class Move : MonoBehaviour
         moving = Input.GetAxis("Horizontal");
 
         rigidbody2d.velocity = new Vector2(speed * moving, rigidbody2d.velocity.y);
+
     }
 
 }
