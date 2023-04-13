@@ -118,9 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 698ffe069268e1e43a57dab013adb014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpforce: 5
+  jumpforce: 4
   speed: 5
-  moving: 0
+  moving: 2
   player: {fileID: 4585104236993850779}
   rigidbody2d: {fileID: 4585104236993850758}
 --- !u!61 &-8420155541069586591

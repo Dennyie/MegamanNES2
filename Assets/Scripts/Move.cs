@@ -22,7 +22,7 @@ public class Move : MonoBehaviour
 #endif
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             
             rigidbody2d.velocity = Vector2.up * jumpforce;
