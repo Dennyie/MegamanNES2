@@ -4,34 +4,85 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    [SerializeField] private float jumpforce;
     [SerializeField] private float speed;
-    [SerializeField] private float moving;
     [SerializeField] private GameObject player;
     [SerializeField] private Rigidbody2D rigidbody2d;
-    [SerializeField] private 
+    [SerializeField] private float maxJumpHeight;
+    [SerializeField] private float initialJumpForce;
+    [SerializeField] private float jumpTime = 0.5f; // Tempo máximo de salto
+    private float startY;
+    private float moving;
+    private bool isGrounded = false;
+    private bool canJump = true;
+    private bool hasPressedSpace = false;
+    private float jumpTimeCounter = 0f;
 
-#if UNITY_EDITOR
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float checkRadius;
+    [SerializeField] private LayerMask whatIsGround;
 
-    void OnValidate()   
+    void Start()
     {
-        rigidbody2d = player.GetComponent<Rigidbody2D>();
+        startY = transform.position.y;
     }
 
-
-#endif
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            
-            rigidbody2d.velocity = Vector2.up * jumpforce;
+            hasPressedSpace = true;
+            canJump = true;
+            jumpTimeCounter = jumpTime;
+            rigidbody2d.AddForce(Vector2.up * initialJumpForce, ForceMode2D.Impulse);
         }
 
-        moving = Input.GetAxis("Horizontal");
+        if (Input.GetKey(KeyCode.Space) && hasPressedSpace && canJump)
+        {
+            if (jumpTimeCounter > 0)
+            {
+                rigidbody2d.AddForce(Vector2.up * initialJumpForce * jumpTimeCounter, ForceMode2D.Force);
+                jumpTimeCounter -= Time.deltaTime;
+            }
+            else
+            {
+                canJump = false;
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space) && hasPressedSpace)
+        {
+            canJump = false;
+        }
+
+        moving = Input.GetAxisRaw("Horizontal");
 
         rigidbody2d.velocity = new Vector2(speed * moving, rigidbody2d.velocity.y);
 
+        float jumpHeight = transform.position.y - startY;
+        //Debug.Log("Jump Height: " + jumpHeight);
+
+        if (jumpHeight > startY + maxJumpHeight)
+        {
+            canJump = false;
+        }
+
+        if (isGrounded && !hasPressedSpace)
+        {
+            canJump = false;
+        }
+
+        if (!isGrounded)
+        {
+            hasPressedSpace = false;
+        }
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        if (groundCheck == null) return;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(groundCheck.position, checkRadius);
+    }
 }

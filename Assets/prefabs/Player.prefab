@@ -118,11 +118,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 698ffe069268e1e43a57dab013adb014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpforce: 4
   speed: 5
-  moving: 2
   player: {fileID: 4585104236993850779}
   rigidbody2d: {fileID: 4585104236993850758}
+  maxJumpHeight: 5
+  initialJumpForce: 4
+  jumpForce: 0
+  groundCheck: {fileID: 3652705609587487259, guid: b8e8eb7836dede74896a5f33a0dfe200,
+    type: 3}
+  checkRadius: 1
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!61 &-8420155541069586591
 BoxCollider2D:
   m_ObjectHideFlags: 0
