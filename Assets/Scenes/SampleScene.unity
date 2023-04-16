@@ -534,7 +534,7 @@ PrefabInstance:
     - target: {fileID: 4585104236993850757, guid: e4997379fc36ead4b8d676b66ef467bd,
         type: 3}
       propertyPath: checkRadius
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4585104236993850757, guid: e4997379fc36ead4b8d676b66ef467bd,
         type: 3}
@@ -549,7 +549,7 @@ PrefabInstance:
     - target: {fileID: 4585104236993850757, guid: e4997379fc36ead4b8d676b66ef467bd,
         type: 3}
       propertyPath: initialJumpForce
-      value: 6
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4585104236993850757, guid: e4997379fc36ead4b8d676b66ef467bd,
         type: 3}
