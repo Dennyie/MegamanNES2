@@ -79,7 +79,7 @@ public class Move : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected() //para mostrar o tamanho do gizmos no jogo
     {
         if (groundCheck == null) return;
         Gizmos.color = Color.red;

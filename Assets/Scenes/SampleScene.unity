@@ -529,7 +529,7 @@ PrefabInstance:
     - target: {fileID: 4585104236993850757, guid: e4997379fc36ead4b8d676b66ef467bd,
         type: 3}
       propertyPath: jumpTime
-      value: 25
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4585104236993850757, guid: e4997379fc36ead4b8d676b66ef467bd,
         type: 3}
@@ -544,12 +544,12 @@ PrefabInstance:
     - target: {fileID: 4585104236993850757, guid: e4997379fc36ead4b8d676b66ef467bd,
         type: 3}
       propertyPath: maxJumpHeight
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4585104236993850757, guid: e4997379fc36ead4b8d676b66ef467bd,
         type: 3}
       propertyPath: initialJumpForce
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4585104236993850757, guid: e4997379fc36ead4b8d676b66ef467bd,
         type: 3}
@@ -560,6 +560,11 @@ PrefabInstance:
         type: 3}
       propertyPath: whatIsGround.m_Bits
       value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 4585104236993850758, guid: e4997379fc36ead4b8d676b66ef467bd,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4585104236993850779, guid: e4997379fc36ead4b8d676b66ef467bd,
         type: 3}
