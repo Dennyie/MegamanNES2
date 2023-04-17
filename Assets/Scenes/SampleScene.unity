@@ -529,7 +529,7 @@ PrefabInstance:
     - target: {fileID: 4585104236993850757, guid: e4997379fc36ead4b8d676b66ef467bd,
         type: 3}
       propertyPath: jumpTime
-      value: 15
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4585104236993850757, guid: e4997379fc36ead4b8d676b66ef467bd,
         type: 3}

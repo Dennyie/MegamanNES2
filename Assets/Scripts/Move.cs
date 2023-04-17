@@ -9,7 +9,7 @@ public class Move : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidbody2d;
     [SerializeField] private float maxJumpHeight;
     [SerializeField] private float initialJumpForce;
-    [SerializeField] private float jumpTime = 0.5f; // Tempo máximo de salto
+    [SerializeField] private float jumpTime; // Tempo máximo de salto
     private float startY;
     private float moving;
     private bool isGrounded = false;
