@@ -123,7 +123,7 @@ MonoBehaviour:
   rigidbody2d: {fileID: 4585104236993850758}
   maxJumpHeight: 5
   initialJumpForce: 4
-  jumpForce: 0
+  jumpTime: 0
   groundCheck: {fileID: 3652705609587487259, guid: b8e8eb7836dede74896a5f33a0dfe200,
     type: 3}
   checkRadius: 1
