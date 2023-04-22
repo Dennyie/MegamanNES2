@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4585104236993850752}
   - component: {fileID: 4585104236993850759}
   - component: {fileID: 4585104236993850758}
-  - component: {fileID: 4585104236993850757}
   - component: {fileID: -8420155541069586591}
+  - component: {fileID: 2917891615301816590}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4585104236993850779}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.32, z: 0}
+  m_LocalPosition: {x: 0, y: -4.148, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -106,30 +106,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4585104236993850757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4585104236993850779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 698ffe069268e1e43a57dab013adb014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  player: {fileID: 4585104236993850779}
-  rigidbody2d: {fileID: 4585104236993850758}
-  maxJumpHeight: 5
-  initialJumpForce: 4
-  jumpTime: 0
-  groundCheck: {fileID: 3652705609587487259, guid: b8e8eb7836dede74896a5f33a0dfe200,
-    type: 3}
-  checkRadius: 1
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!61 &-8420155541069586591
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -156,3 +132,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.65625, y: 0.75}
   m_EdgeRadius: 0
+--- !u!114 &2917891615301816590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4585104236993850779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc36f9bc6de06bc48b695c3217548dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  player: {fileID: 4585104236993850779}
+  rigidbody2d: {fileID: 4585104236993850758}
+  initialJumpForce: 1
+  maxJumpForce: 6
+  boxSize: {x: 0.66, y: 0.1, z: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  maxDistance: -0.04
+  canJump: 1
