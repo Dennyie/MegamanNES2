@@ -148,7 +148,7 @@ MonoBehaviour:
   player: {fileID: 4585104236993850779}
   rigidbody2d: {fileID: 4585104236993850758}
   initialJumpForce: 1
-  maxJumpForce: 6
+  maxJumpForce: 6.5
   boxSize: {x: 0.66, y: 0.1, z: 0}
   layerMask:
     serializedVersion: 2

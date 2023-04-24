@@ -35,24 +35,24 @@ public class PlayerController : MonoBehaviour
     }
     void PlayerMove()
     {
-        if (Input.GetKey(KeyCode.Space) && IsGrounded() && canJump)
+        
+        if (Input.GetKey(KeyCode.Space) && canJump)
         {
             if (accumulatedJumpForce < maxJumpForce)
             {
-                Debug.Log(accumulatedJumpForce);
+                //Debug.Log(accumulatedJumpForce);
                 rigidbody2d.AddForce(Vector2.up * accumulatedJumpForce, ForceMode2D.Impulse);
                 accumulatedJumpForce += 0.5f;
             }
-        if (rigidbody2d.velocity.y < 0)
+            if (rigidbody2d.velocity.y <= 0)
             {
                 canJump = false;
-            }
+            } 
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (!Input.GetKey(KeyCode.Space)  && IsGrounded())
         {
             accumulatedJumpForce = initialJumpForce;
-            Debug.Log(accumulatedJumpForce);
             canJump = true;
         }
 
@@ -77,6 +77,6 @@ public class PlayerController : MonoBehaviour
         {
             return false;
         }
-    }
+    } 
 }
 
