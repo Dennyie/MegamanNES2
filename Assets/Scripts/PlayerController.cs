@@ -13,7 +13,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector3 boxSize;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private float maxDistance;
-    [SerializeField] private bool canJump = true;
+    [SerializeField] private bool intendToJump = false;
+    [SerializeField] private bool didJump = false;
+    //[SerializeField] private bool canJump;
     private float accumulatedJumpForce;
     private float moving;
 
@@ -25,36 +27,71 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        accumulatedJumpForce = initialJumpForce;
-        canJump = true;
+        accumulatedJumpForce = initialJumpForce; 
     }
 
     void Update()
     {
-        PlayerMove();                  
+        // utilizado somente para verificar se o IsGrounded está sendo ativado//
+        /*if (IsGrounded())
+        {
+            canJump = true;
+        }
+        if (!IsGrounded())
+        {
+            canJump = false;
+        } */
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            intendToJump = true;
+        }
+        
+
+        if (intendToJump && IsGrounded()) 
+        {
+            InitialJump();
+        }
+
+        PlayerMove();    
+        
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            didJump = false;
+            intendToJump = false;
+            accumulatedJumpForce = initialJumpForce;
+        }
     }
+
+    void InitialJump()
+    {
+        rigidbody2d.velocity = Vector2.up * initialJumpForce;
+        didJump = true;
+    }
+
     void PlayerMove()
     {
         
-        if (Input.GetKey(KeyCode.Space) && canJump)
+        if (didJump && Input.GetKey(KeyCode.Space) && !IsGrounded() )
         {
             if (accumulatedJumpForce < maxJumpForce)
             {
-                //Debug.Log(accumulatedJumpForce);
+                Debug.Log(accumulatedJumpForce);
                 rigidbody2d.AddForce(Vector2.up * accumulatedJumpForce, ForceMode2D.Impulse);
                 accumulatedJumpForce += 0.5f;
             }
-            if (rigidbody2d.velocity.y <= 0)
-            {
-                canJump = false;
-            } 
         }
 
-        if (!Input.GetKey(KeyCode.Space)  && IsGrounded())
+        if (rigidbody2d.velocity.y <= 0)
+        {
+            didJump = false;
+            intendToJump = false;
+        }
+
+        if (IsGrounded())
         {
             accumulatedJumpForce = initialJumpForce;
-            canJump = true;
-        }
+        } 
 
         moving = Input.GetAxisRaw("Horizontal");
 
