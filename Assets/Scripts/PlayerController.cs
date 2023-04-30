@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
 
     private void Animating()
     {
-        if (Input.GetAxis("Horizontal") != 0 ) // Verificando se a o jogador não está parado para ativar a booleana de controla da animação para verdadeiro
+        if (Input.GetAxisRaw("Horizontal") != 0 ) // Verificando se a o jogador não está parado para ativar a booleana de controla da animação para verdadeiro
         {
             animator.SetBool("IsRunning", true);
             //Debug.Log("TA CORRENDO!");
