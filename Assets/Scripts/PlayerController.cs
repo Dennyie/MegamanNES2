@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxDistance;
     [SerializeField] private bool intendToJump = false;
     [SerializeField] private bool didJump = false;
+    [SerializeField] private Animator animator;
     //[SerializeField] private bool canJump;
     [SerializeField] private float accumulatedJumpForce;
     [SerializeField] private float forceToAccumulate;
@@ -43,6 +44,8 @@ public class PlayerController : MonoBehaviour
             canJump = false;
         } */
 
+        Animating();
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             intendToJump = true;
@@ -61,6 +64,15 @@ public class PlayerController : MonoBehaviour
             didJump = false;
             intendToJump = false;
             accumulatedJumpForce = initialJumpForce;
+        }
+
+        if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
         }
     }
 
@@ -115,6 +127,36 @@ public class PlayerController : MonoBehaviour
         {
             return false;
         }
-    } 
+    }
+
+    private void Animating()
+    {
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            animator.SetBool("BeginningRunning", true);
+        }
+        else
+        {
+            animator.SetBool("BeginningRunning", false);
+        }
+        if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            animator.SetBool("EndingRunning", true);
+        }
+        else
+        {
+            animator.SetBool("EndingRunning", false);
+        }
+
+
+        if (Input.GetAxis("Horizontal") != 0 )
+        {
+            animator.SetBool("IsRunning", true);
+        }
+        else 
+        {
+            animator.SetBool("IsRunning", false);
+        }
+    }
 }
 

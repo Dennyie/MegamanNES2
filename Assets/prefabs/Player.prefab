@@ -157,6 +157,7 @@ MonoBehaviour:
   maxDistance: -0.04
   intendToJump: 0
   didJump: 0
+  animator: {fileID: 3496337264583003106}
   accumulatedJumpForce: 1.5
   forceToAccumulate: 0.5
 --- !u!95 &3496337264583003106
