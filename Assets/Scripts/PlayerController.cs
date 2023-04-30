@@ -46,37 +46,37 @@ public class PlayerController : MonoBehaviour
 
         Animating();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) // A intenção de pular é sempre ativada quando o jogador aperta a barra de espaço
         {
             intendToJump = true;
         }
         
 
-        if (intendToJump && IsGrounded()) 
+        if (intendToJump && IsGrounded()) // Para que o pulo somente ocorra caso o a intenção de pular ocorra enquanto o jogador está no chão
         {
             InitialJump();
         }
 
         PlayerMove();    
         
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space)) // Se o jogador soltar a barra de espaço ele desativa as variáveis que permitem o pulo e reseta o acumulo de força
         {
             didJump = false;
             intendToJump = false;
             accumulatedJumpForce = initialJumpForce;
         }
 
-        if (Input.GetAxisRaw("Horizontal") > 0)
+        if (Input.GetAxisRaw("Horizontal") > 0) // Para que o jogador sempre vire para direita quando o GetAxis for maior que 0
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
-        else if (Input.GetAxisRaw("Horizontal") < 0)
+        else if (Input.GetAxisRaw("Horizontal") < 0) // Para que o jogador sempre vire a esquerda quando o GetAxis for menor que 0
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
     }
 
-    void InitialJump()
+    void InitialJump() 
     {
         rigidbody2d.velocity = Vector2.up * initialJumpForce;
         didJump = true;
@@ -85,30 +85,30 @@ public class PlayerController : MonoBehaviour
     void PlayerMove()
     {
         
-        if (didJump && Input.GetKey(KeyCode.Space) && !IsGrounded() )
+        if (didJump && Input.GetKey(KeyCode.Space) && !IsGrounded() ) 
         {
-            if (accumulatedJumpForce < maxJumpForce)
+            if (accumulatedJumpForce < maxJumpForce) // Para deixar sempre que o accumulatedJumpForce acumule até o máximo que definimos no maxJumpForce
             {
-                Debug.Log(accumulatedJumpForce);
+                //Debug.Log(accumulatedJumpForce); // Debug para mostrar no console a força que está sendo acumulada para ajudar na hora da calibrar o pulo
                 rigidbody2d.AddForce(Vector2.up * accumulatedJumpForce, ForceMode2D.Impulse);
                 accumulatedJumpForce += forceToAccumulate;
             }
         }
 
-        if (rigidbody2d.velocity.y <= 0)
+        if (rigidbody2d.velocity.y <= 0) // Se o jogador estiver caindo irá impedir ele de pular novamente deixando as váriaveis abaixo como falsas
         {
             didJump = false;
             intendToJump = false;
         }
 
-        if (IsGrounded())
+        if (IsGrounded()) // Se o jogador está no chão o acumulo de força do pulo irá voltar para o InitualJumpForce
         {
             accumulatedJumpForce = initialJumpForce;
         } 
 
-        moving = Input.GetAxisRaw("Horizontal");
+        moving = Input.GetAxisRaw("Horizontal"); // responsável pela movimentação do jogador
 
-        rigidbody2d.velocity = new Vector2(speed * moving, rigidbody2d.velocity.y);
+        rigidbody2d.velocity = new Vector2(speed * moving, rigidbody2d.velocity.y); // funciona com o Speed que pode ser alterado o valor no Inspector para correr mais rápido ou mais devagar
     }
 
     private void OnDrawGizmos()
@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawCube(transform.position - transform.up * maxDistance, boxSize);
     }
 
-    private bool IsGrounded()
+    private bool IsGrounded() // Responsável por verificar por meio de um BoxCast se o jogador está tocando na layer Ground
     {
         if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, maxDistance, layerMask))
         {
@@ -131,31 +131,24 @@ public class PlayerController : MonoBehaviour
 
     private void Animating()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            animator.SetBool("BeginningRunning", true);
-        }
-        else
-        {
-            animator.SetBool("BeginningRunning", false);
-        }
-        if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.LeftArrow))
-        {
-            animator.SetBool("EndingRunning", true);
-        }
-        else
-        {
-            animator.SetBool("EndingRunning", false);
-        }
-
-
-        if (Input.GetAxis("Horizontal") != 0 )
+        if (Input.GetAxis("Horizontal") != 0 ) // Verificando se a o jogador não está parado para ativar a booleana de controla da animação para verdadeiro
         {
             animator.SetBool("IsRunning", true);
+            //Debug.Log("TA CORRENDO!");
         }
         else 
         {
             animator.SetBool("IsRunning", false);
+            //Debug.Log("NAO TA CORRENDO!");
+        }
+
+        if (!IsGrounded()) // Verificando se o jogador está fora do chão para fazer a animação de pulo
+        {
+            animator.SetBool("InAir", true);
+        }
+        else
+        {
+            animator.SetBool("InAir", false);
         }
     }
 }
