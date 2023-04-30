@@ -406,15 +406,15 @@ PrefabInstance:
       propertyPath: whatIsGround.m_Bits
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 4585104236993850759, guid: e4997379fc36ead4b8d676b66ef467bd,
+        type: 3}
+      propertyPath: m_DrawMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4585104236993850779, guid: e4997379fc36ead4b8d676b66ef467bd,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4585104236993850779, guid: e4997379fc36ead4b8d676b66ef467bd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4585104236993850757, guid: e4997379fc36ead4b8d676b66ef467bd, type: 3}

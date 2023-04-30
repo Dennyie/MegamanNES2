@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool intendToJump = false;
     [SerializeField] private bool didJump = false;
     //[SerializeField] private bool canJump;
-    private float accumulatedJumpForce;
+    [SerializeField] private float accumulatedJumpForce;
+    [SerializeField] private float forceToAccumulate;
     private float moving;
 
 
@@ -78,7 +79,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log(accumulatedJumpForce);
                 rigidbody2d.AddForce(Vector2.up * accumulatedJumpForce, ForceMode2D.Impulse);
-                accumulatedJumpForce += 0.5f;
+                accumulatedJumpForce += forceToAccumulate;
             }
         }
 

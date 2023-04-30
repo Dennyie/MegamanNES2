@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4585104236993850758}
   - component: {fileID: -8420155541069586591}
   - component: {fileID: 2917891615301816590}
+  - component: {fileID: 3496337264583003106}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -156,4 +157,24 @@ MonoBehaviour:
   maxDistance: -0.04
   intendToJump: 0
   didJump: 0
-  canJump: 1
+  accumulatedJumpForce: 1.5
+  forceToAccumulate: 0.5
+--- !u!95 &3496337264583003106
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4585104236993850779}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 80fc7e615d95ce74a988b2a63423f66f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
