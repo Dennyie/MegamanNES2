@@ -59,8 +59,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4585104236993850779}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.8, y: -4.02, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 5184006913597735813}
   m_Father: {fileID: 0}
@@ -183,7 +183,7 @@ MonoBehaviour:
   shotRb: {fileID: 0}
   initialJumpForce: 1.5
   maxJumpForce: 5
-  boxSize: {x: 0.69, y: 0.04, z: 0}
+  boxSize: {x: 0.82, y: 0.04, z: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 256

@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] private bool canJump;
     [SerializeField] private float accumulatedJumpForce;
     [SerializeField] private float forceToAccumulate;
-    [SerializeField] private bool canShoot;
     [SerializeField] private bool intendToShoot;
+    [SerializeField] private GameObject [] bullets;
     private float moving;
 
 
@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         accumulatedJumpForce = initialJumpForce;
-        canShoot = true;
     }
 
     void Update()
@@ -166,7 +165,7 @@ public class PlayerController : MonoBehaviour
 
     void TryintToShoot()
     {
-        if (intendToShoot == true && canShoot == true)
+        if (intendToShoot == true)
         {
             
         }
