@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,11 +19,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool intendToJump = false;
     [SerializeField] private bool didJump = false;
     [SerializeField] private Animator animator;
-    //[SerializeField] private bool canJump;
     [SerializeField] private float accumulatedJumpForce;
     [SerializeField] private float forceToAccumulate;
     [SerializeField] private GameObject [] bullets;
+    [SerializeField] private GameObject hand;
+    [SerializeField] private Vector3 handPosition;
     private float moving;
+    //[SerializeField] private bool canJump;
 
 
     private void Awake()
@@ -161,7 +164,10 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            
+            handPosition = hand.transform.position;
+            Debug.Log("OI");
+            shot.transform.position = handPosition;
+            shot.SetActive(true);
         }
     }
 }
