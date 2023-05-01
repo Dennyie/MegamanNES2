@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private GameObject player;
     [SerializeField] private Rigidbody2D rigidbody2d;
+    [SerializeField] private GameObject shot;
+    [SerializeField] private Rigidbody2D shotRb;
     [SerializeField] private float initialJumpForce;
     [SerializeField] private float maxJumpForce;
     [SerializeField] private Vector3 boxSize;
@@ -19,6 +21,8 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] private bool canJump;
     [SerializeField] private float accumulatedJumpForce;
     [SerializeField] private float forceToAccumulate;
+    [SerializeField] private bool canShoot;
+    [SerializeField] private bool intendToShoot;
     private float moving;
 
 
@@ -29,7 +33,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        accumulatedJumpForce = initialJumpForce; 
+        accumulatedJumpForce = initialJumpForce;
+        canShoot = true;
     }
 
     void Update()
@@ -68,12 +73,19 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetAxisRaw("Horizontal") > 0) // Para que o jogador sempre vire para direita quando o GetAxis for maior que 0
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(1.5f, transform.localScale.y, transform.localScale.z);
         }
         else if (Input.GetAxisRaw("Horizontal") < 0) // Para que o jogador sempre vire a esquerda quando o GetAxis for menor que 0
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-1.5f, transform.localScale.y, transform.localScale.z); 
         }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            intendToShoot = true;
+        }
+
+        TryintToShoot();
     }
 
     void InitialJump() 
@@ -149,6 +161,14 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetBool("InAir", false);
+        }
+    }
+
+    void TryintToShoot()
+    {
+        if (intendToShoot == true && canShoot == true)
+        {
+            
         }
     }
 }

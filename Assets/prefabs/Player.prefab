@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2755382129870231748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5184006913597735813}
+  m_Layer: 0
+  m_Name: Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5184006913597735813
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2755382129870231748}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.4848, y: 0.3752, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4585104236993850752}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4585104236993850779
 GameObject:
   m_ObjectHideFlags: 0
@@ -31,7 +61,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5184006913597735813}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -120,7 +151,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.375}
+  m_Offset: {x: 0, y: 0.38806152}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -131,7 +162,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.65625, y: 0.75}
+  m_Size: {x: 0.53682864, y: 0.72387695}
   m_EdgeRadius: 0
 --- !u!114 &2917891615301816590
 MonoBehaviour:
@@ -148,9 +179,11 @@ MonoBehaviour:
   speed: 5
   player: {fileID: 4585104236993850779}
   rigidbody2d: {fileID: 4585104236993850758}
+  shot: {fileID: 0}
+  shotRb: {fileID: 0}
   initialJumpForce: 1.5
   maxJumpForce: 5
-  boxSize: {x: 0.66, y: 0.08, z: 0}
+  boxSize: {x: 0.69, y: 0.04, z: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -160,6 +193,8 @@ MonoBehaviour:
   animator: {fileID: 3496337264583003106}
   accumulatedJumpForce: 1.5
   forceToAccumulate: 0.5
+  canShoot: 0
+  intendToShoot: 0
 --- !u!95 &3496337264583003106
 Animator:
   serializedVersion: 3

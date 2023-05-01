@@ -7,6 +7,9 @@ MonoImporter:
   - player: {fileID: 4585104236993850779, guid: e4997379fc36ead4b8d676b66ef467bd,
       type: 3}
   - rigidbody2d: {instanceID: 0}
+  - shot: {fileID: 494185108164360123, guid: 0a24d0723e016254b903c901050a77c2, type: 3}
+  - shotRb: {instanceID: 0}
+  - animator: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
