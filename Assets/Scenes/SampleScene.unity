@@ -896,11 +896,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2917891615301816590, guid: e4997379fc36ead4b8d676b66ef467bd,
         type: 3}
-      propertyPath: bullets.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2917891615301816590, guid: e4997379fc36ead4b8d676b66ef467bd,
-        type: 3}
       propertyPath: bullets.Array.data[0]
       value: 
       objectReference: {fileID: 454105264}

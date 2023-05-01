@@ -179,7 +179,7 @@ MonoBehaviour:
   speed: 5
   player: {fileID: 4585104236993850779}
   rigidbody2d: {fileID: 4585104236993850758}
-  shot: {fileID: 0}
+  shot: {fileID: 494185108164360123, guid: 0a24d0723e016254b903c901050a77c2, type: 3}
   shotRb: {fileID: 0}
   initialJumpForce: 1.5
   maxJumpForce: 5
@@ -193,8 +193,11 @@ MonoBehaviour:
   animator: {fileID: 3496337264583003106}
   accumulatedJumpForce: 1.5
   forceToAccumulate: 0.5
-  canShoot: 0
   intendToShoot: 0
+  bullets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!95 &3496337264583003106
 Animator:
   serializedVersion: 3
