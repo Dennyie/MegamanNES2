@@ -9,8 +9,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private GameObject player;
     [SerializeField] private Rigidbody2D rigidbody2d;
-    [SerializeField] private GameObject shot;
-    [SerializeField] private Rigidbody2D shotRb;
     [SerializeField] private float initialJumpForce;
     [SerializeField] private float maxJumpForce;
     [SerializeField] private Vector3 boxSize;
@@ -22,8 +20,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float accumulatedJumpForce;
     [SerializeField] private float forceToAccumulate;
     [SerializeField] private GameObject [] bullets;
+    [SerializeField] private Rigidbody2D[] bulletsRb;
     [SerializeField] private GameObject hand;
     [SerializeField] private Vector3 handPosition;
+    [SerializeField] private float shootForce;
     private float moving;
     //[SerializeField] private bool canJump;
 
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
 
         Animating();
 
-        if (Input.GetKeyDown(KeyCode.Space)) // A intenção de pular é sempre ativada quando o jogador aperta a barra de espaço
+        if (Input.GetKeyDown(KeyCode.X)) // A intenção de pular é sempre ativada quando o jogador aperta a barra de espaço
         {
             intendToJump = true;
         }
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
 
         PlayerMove();    
         
-        if (Input.GetKeyUp(KeyCode.Space)) // Se o jogador soltar a barra de espaço ele desativa as variáveis que permitem o pulo e reseta o acumulo de força
+        if (Input.GetKeyUp(KeyCode.X)) // Se o jogador soltar a barra de espaço ele desativa as variáveis que permitem o pulo e reseta o acumulo de força
         {
             didJump = false;
             intendToJump = false;
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
     void PlayerMove()
     {
         
-        if (didJump && Input.GetKey(KeyCode.Space) && !IsGrounded() ) 
+        if (didJump && Input.GetKey(KeyCode.X) && !IsGrounded() ) 
         {
             if (accumulatedJumpForce < maxJumpForce) // Para deixar sempre que o accumulatedJumpForce acumule até o máximo que definimos no maxJumpForce
             {
@@ -165,9 +165,55 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             handPosition = hand.transform.position;
-            Debug.Log("OI");
-            shot.transform.position = handPosition;
-            shot.SetActive(true);
+            //Debug.Log("OI");
+            for (int i = 0; i < bullets.Length; i++)
+            {
+                if (bullets[0].activeSelf == false)
+                { 
+                    bullets[0].SetActive(true);
+                    bullets[0].transform.position = handPosition;
+                    
+                    if (player.transform.localScale.x > 0)
+                    {
+                        bulletsRb[0].AddForce(new Vector3(shootForce, 0, 0));
+                    }
+                    else if (player.transform.localScale.x < 0)
+                    {
+                        bulletsRb[0].AddForce(new Vector3(shootForce*-1, 0, 0));
+                    }
+                    break;
+                }
+                else if (bullets[1].activeSelf == false)
+                {
+                    bullets[1].SetActive(true);
+                    bullets[1].transform.position = handPosition;
+
+                    if (player.transform.localScale.x > 0)
+                    {
+                        bulletsRb[1].AddForce(new Vector3(shootForce, 0, 0));
+                    }
+                    else if (player.transform.localScale.x < 0)
+                    {
+                        bulletsRb[1].AddForce(new Vector3(shootForce * -1, 0, 0));
+                    }
+                    break;
+                }
+                else if (bullets[2].activeSelf == false)
+                {
+                    bullets[2].SetActive(true);
+                    bullets[2].transform.position = handPosition;
+
+                    if (player.transform.localScale.x > 0)
+                    {
+                        bulletsRb[2].AddForce(new Vector3(shootForce, 0, 0));
+                    }
+                    else if (player.transform.localScale.x < 0)
+                    {
+                        bulletsRb[2].AddForce(new Vector3(shootForce * -1, 0, 0));
+                    }
+                    break;
+                }
+            }
         }
     }
 }
