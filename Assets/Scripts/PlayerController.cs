@@ -159,6 +159,14 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("InAir", false);
         }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            animator.SetBool("IsShooting", true);
+        }
+        else
+        {
+            animator.SetBool("IsShooting", false);
+        }
     }
 
     void TryintToShoot()

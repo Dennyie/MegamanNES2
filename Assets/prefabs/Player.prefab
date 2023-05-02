@@ -198,7 +198,7 @@ MonoBehaviour:
   bulletsRb: []
   hand: {fileID: 0}
   handPosition: {x: 0, y: 0, z: 0}
-  shootForce: 500
+  shootForce: 1000
 --- !u!95 &3496337264583003106
 Animator:
   serializedVersion: 3
