@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D[] bulletsRb;
     [SerializeField] private GameObject hand;
     [SerializeField] private Vector3 handPosition;
+    [SerializeField] private GameObject handUp;
+    [SerializeField] private GameObject handDown;
     [SerializeField] private float shootForce;
     private float moving;
     //[SerializeField] private bool canJump;
@@ -153,10 +155,12 @@ public class PlayerController : MonoBehaviour
 
         if (!IsGrounded()) // Verificando se o jogador está fora do chão para fazer a animação de pulo
         {
+            hand.transform.position = handUp.transform.position;
             animator.SetBool("InAir", true);
         }
         else
         {
+            hand.transform.position = handDown.transform.position;
             animator.SetBool("InAir", false);
         }
         if (Input.GetKeyDown(KeyCode.Z))
