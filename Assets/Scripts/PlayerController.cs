@@ -82,6 +82,7 @@ public class PlayerController : MonoBehaviour
         }
 
         TryintToShoot();
+
     }
 
     void InitialJump() 
@@ -165,9 +166,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             handPosition = hand.transform.position;
-            //Debug.Log("OI");
-            for (int i = 0; i < bullets.Length; i++)
-            {
+
                 if (bullets[0].activeSelf == false)
                 { 
                     bullets[0].SetActive(true);
@@ -181,7 +180,6 @@ public class PlayerController : MonoBehaviour
                     {
                         bulletsRb[0].AddForce(new Vector3(shootForce*-1, 0, 0));
                     }
-                    break;
                 }
                 else if (bullets[1].activeSelf == false)
                 {
@@ -196,7 +194,6 @@ public class PlayerController : MonoBehaviour
                     {
                         bulletsRb[1].AddForce(new Vector3(shootForce * -1, 0, 0));
                     }
-                    break;
                 }
                 else if (bullets[2].activeSelf == false)
                 {
@@ -211,10 +208,9 @@ public class PlayerController : MonoBehaviour
                     {
                         bulletsRb[2].AddForce(new Vector3(shootForce * -1, 0, 0));
                     }
-                    break;
-                }
             }
         }
     }
+
 }
 
