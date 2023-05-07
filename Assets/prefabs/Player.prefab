@@ -194,7 +194,7 @@ Rigidbody2D:
   m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1.5
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -260,9 +260,16 @@ MonoBehaviour:
   bulletsRb: []
   hand: {fileID: 0}
   handPosition: {x: 0, y: 0, z: 0}
-  handUp: {x: 0, y: 0, z: 0}
-  handDown: {x: 0, y: 0, z: 0}
-  shootForce: 1000
+  handUp: {fileID: 0}
+  handDown: {fileID: 0}
+  shootForce: 650
+  goDownJump: 5
+  currentYposition: 0
+  spriteRenderer: {fileID: 0}
+  spriteHeight: 0
+  maxJumpHeight: 0
+  jumpHeight: 1.3
+  gravityDown: 7
 --- !u!95 &3496337264583003106
 Animator:
   serializedVersion: 3

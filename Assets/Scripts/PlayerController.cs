@@ -26,7 +26,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject handUp;
     [SerializeField] private GameObject handDown;
     [SerializeField] private float shootForce;
+    [SerializeField] private float goDownJump;
     private float moving;
+    [SerializeField] private float currentYposition;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private float spriteHeight;
+    [SerializeField] private float maxJumpHeight;
+    [SerializeField] private float jumpHeight;
+    [SerializeField] private float gravityDown;
+
     //[SerializeField] private bool canJump;
 
 
@@ -38,6 +46,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         accumulatedJumpForce = initialJumpForce;
+        spriteHeight = spriteRenderer.bounds.size.y;
     }
 
     void Update()
@@ -51,6 +60,8 @@ public class PlayerController : MonoBehaviour
         {
             canJump = false;
         } */
+
+        MaxJumpHeight();
 
         Animating();
 
@@ -96,7 +107,7 @@ public class PlayerController : MonoBehaviour
     void PlayerMove()
     {
         
-        if (didJump && Input.GetKey(KeyCode.X) && !IsGrounded() ) 
+        if (didJump && Input.GetKey(KeyCode.X) && !IsGrounded() && !(player.transform.localPosition.y == currentYposition) ) 
         {
             if (accumulatedJumpForce < maxJumpForce) // Para deixar sempre que o accumulatedJumpForce acumule até o máximo que definimos no maxJumpForce
             {
@@ -223,6 +234,37 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    void MaxJumpHeight()
+    {
+        if (Input.GetKeyDown(KeyCode.X) && player.transform.localPosition.y < 0 && IsGrounded())
+        {
+            maxJumpHeight = jumpHeight * spriteHeight;
+            currentYposition = transform.position.y + maxJumpHeight;
+        }
+        if (Input.GetKeyDown(KeyCode.X) && player.transform.position.y > 0 && IsGrounded())
+        {
+            maxJumpHeight = jumpHeight * spriteHeight;
+            currentYposition = transform.position.y + maxJumpHeight;
+        }
+        if (transform.position.y >= currentYposition || (Input.GetKeyUp(KeyCode.X)))
+        {
+            rigidbody2d.gravityScale = 10;
+            intendToJump = false;
+            didJump = false;
+            currentYposition = 0;
+        }
+        if (didJump && (Input.GetKey(KeyCode.X)))
+        {
+            rigidbody2d.gravityScale = 0;
+        }
+        else
+        {
+            rigidbody2d.gravityScale = gravityDown;
+        }
+
+
+    }
+
 
 }
 

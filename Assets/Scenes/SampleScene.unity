@@ -1962,6 +1962,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4585104237116346580}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &384359641 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4585104236993850759, guid: e4997379fc36ead4b8d676b66ef467bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 4585104237116346580}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &418668894
 GameObject:
   m_ObjectHideFlags: 3
@@ -10816,8 +10822,8 @@ PrefabInstance:
       objectReference: {fileID: 4585104237116346581}
     - target: {fileID: 2917891615301816590, guid: e4997379fc36ead4b8d676b66ef467bd,
         type: 3}
-      propertyPath: shootForce
-      value: 650
+      propertyPath: gravityDown
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2917891615301816590, guid: e4997379fc36ead4b8d676b66ef467bd,
         type: 3}
@@ -10829,6 +10835,11 @@ PrefabInstance:
       propertyPath: intendToShoot
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2917891615301816590, guid: e4997379fc36ead4b8d676b66ef467bd,
+        type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 384359641}
     - target: {fileID: 2917891615301816590, guid: e4997379fc36ead4b8d676b66ef467bd,
         type: 3}
       propertyPath: bulletsRb.Array.size
