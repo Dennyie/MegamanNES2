@@ -269,7 +269,7 @@ MonoBehaviour:
   spriteHeight: 0
   maxJumpHeight: 0
   jumpHeight: 1.3
-  gravityDown: 7
+  gravityDown: 4.5
 --- !u!95 &3496337264583003106
 Animator:
   serializedVersion: 3
